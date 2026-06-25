@@ -1,0 +1,52 @@
+.content {
+  padding: var(--space-4);
+}
+
+.section h2 {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  margin-bottom: var(--space-3);
+}
+
+.hint {
+  color: var(--text-dim);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-4);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 52px;
+  text-align: left;
+  padding: 0 var(--space-4);
+  margin-bottom: var(--space-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.button:active {
+  background: var(--surface-raised);
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.message {
+  margin-top: var(--space-3);
+  color: var(--accent);
+  font-size: var(--text-sm);
+}
+
+.messageError {
+  margin-top: var(--space-3);
+  color: var(--danger);
+  font-size: var(--text-sm);
+}

@@ -1,0 +1,31 @@
+CLAUDE.md
+CONTEXT.md
+/docs
+/.claude
+/.agents
+/.codex/hooks.json
+/.impeccable
+skills-lock.json
+PRODUCT.md
+
+# Node / build
+node_modules
+dist
+dist-ssr
+*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

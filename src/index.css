@@ -1,0 +1,102 @@
+/* Latin + Latin-Extended only (covers English plus common accented
+   characters) - the full index pulls in Cyrillic/Greek/Vietnamese subsets
+   this app never needs, which would otherwise bloat the offline precache. */
+@import '@fontsource/nunito/latin-400.css';
+@import '@fontsource/nunito/latin-ext-400.css';
+@import '@fontsource/nunito/latin-600.css';
+@import '@fontsource/nunito/latin-ext-600.css';
+@import '@fontsource/nunito/latin-700.css';
+@import '@fontsource/nunito/latin-ext-700.css';
+@import '@fontsource/nunito/latin-800.css';
+@import '@fontsource/nunito/latin-ext-800.css';
+
+:root {
+  --bg: #15171a;
+  --surface: #1d2024;
+  --surface-raised: #242830;
+  --border: #2c3036;
+  --text: #ecedee;
+  --text-dim: #9aa0a6;
+  --accent: #4fbdb0;
+  --accent-contrast: #08130f;
+  --danger: #e2716b;
+
+  --radius: 14px;
+  --radius-sm: 8px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  --tab-bar-height: 68px;
+  --header-height: 56px;
+  --tap-min: 44px;
+
+  /* Type scale: a few deliberate steps rather than one-off sizes.
+     xs = captions/tab labels, sm = secondary/supporting text,
+     base = body/inputs/buttons, md = nav titles/prominent names,
+     lg = big on-screen headings. */
+  --text-xs: 13px;
+  --text-sm: 15px;
+  --text-base: 17px;
+  --text-md: 19px;
+  --text-lg: 24px;
+
+  --font-sans:
+    'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  color-scheme: dark;
+  font: var(--text-base) / 1.5 var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+input[type='number'] {
+  appearance: textfield;
+}

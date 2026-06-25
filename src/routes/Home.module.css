@@ -1,0 +1,85 @@
+.content {
+  padding: var(--space-4);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.item:active {
+  background: var(--surface-raised);
+}
+
+.itemMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.itemName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--text-base);
+  font-weight: 700;
+}
+
+.itemSub {
+  font-size: var(--text-sm);
+  color: var(--text-dim);
+}
+
+.itemMeta {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.itemDate {
+  font-size: var(--text-sm);
+  color: var(--text-dim);
+}
+
+.itemDuration {
+  font-size: var(--text-sm);
+  color: var(--text-dim);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-6) var(--space-4);
+  color: var(--text-dim);
+  gap: var(--space-3);
+}
+
+.emptyButton {
+  min-height: var(--tap-min);
+  padding: 0 var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--accent);
+  font-size: var(--text-base);
+  font-weight: 600;
+}
