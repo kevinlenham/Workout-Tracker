@@ -4,8 +4,8 @@
   left: 0;
   right: 0;
   display: flex;
-  height: var(--tab-bar-height);
-  padding-bottom: env(safe-area-inset-bottom);
+  height: var(--tab-bar-shell-height);
+  padding: 0 var(--safe-right) var(--safe-bottom) var(--safe-left);
   background: var(--surface);
   border-top: 1px solid var(--border);
 }
@@ -17,9 +17,12 @@
   align-items: center;
   justify-content: center;
   gap: 3px;
+  min-width: 0;
+  min-height: var(--tab-bar-height);
   color: var(--text-dim);
   font-size: var(--text-xs);
   font-weight: 600;
+  line-height: 1.2;
 }
 
 .tab.active {

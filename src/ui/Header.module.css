@@ -4,8 +4,9 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  height: var(--header-height);
-  padding: 0 var(--space-2);
+  height: var(--header-shell-height);
+  padding: var(--safe-top) calc(var(--space-2) + var(--safe-right)) 0
+    calc(var(--space-2) + var(--safe-left));
   background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
@@ -31,4 +32,5 @@
   text-align: center;
   font-size: var(--text-md);
   font-weight: 700;
+  line-height: 1.2;
 }

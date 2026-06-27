@@ -17,7 +17,10 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <main className={styles.main} style={{ paddingBottom: showTabBar ? 'var(--tab-bar-height)' : 0 }}>
+      <main
+        className={styles.main}
+        style={{ paddingBottom: showTabBar ? 'var(--tab-bar-shell-height)' : 0 }}
+      >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/templates" element={<Templates />} />

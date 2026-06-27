@@ -33,6 +33,12 @@
   --tab-bar-height: 68px;
   --header-height: 56px;
   --tap-min: 44px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --header-shell-height: calc(var(--header-height) + var(--safe-top));
+  --tab-bar-shell-height: calc(var(--tab-bar-height) + var(--safe-bottom));
 
   /* Type scale: a few deliberate steps rather than one-off sizes.
      xs = captions/tab labels, sm = secondary/supporting text,
@@ -61,6 +67,8 @@
 
 body {
   margin: 0;
+  min-height: 100svh;
+  background: var(--bg);
 }
 
 #root {
