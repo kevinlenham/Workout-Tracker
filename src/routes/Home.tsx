@@ -1,6 +1,7 @@
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useNavigate } from 'react-router-dom'
 import { Header } from '../ui/Header'
+import { TabBar } from '../ui/TabBar'
 import { TrashIcon } from '../ui/icons'
 import { sessionRepo, templateRepo } from '../db'
 import { formatDate } from '../lib/formatDate'
@@ -23,6 +24,7 @@ export function Home() {
   return (
     <>
       <Header title="Workouts" showSettings />
+      <TabBar />
       <div className={styles.content}>
         {sessions && sessions.length === 0 && (
           <div className={styles.empty}>
