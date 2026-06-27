@@ -11,18 +11,26 @@
 
 .item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
-  text-align: left;
-  padding: var(--space-4);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .item:active {
   background: var(--surface-raised);
+}
+
+.itemOpen {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  padding: var(--space-4);
 }
 
 .itemMain {
@@ -62,6 +70,20 @@
 .itemDuration {
   font-size: var(--text-sm);
   color: var(--text-dim);
+}
+
+.deleteButton {
+  flex-shrink: 0;
+  width: 52px;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--danger);
+}
+
+.deleteButton:active {
+  background: var(--surface-raised);
 }
 
 .empty {

@@ -119,6 +119,10 @@ async function discard(sessionId: string): Promise<void> {
   await db.sessions.delete(sessionId)
 }
 
+async function remove(sessionId: string): Promise<void> {
+  await db.sessions.delete(sessionId)
+}
+
 /** Reverse-chronological list of completed sessions, for History. */
 async function listCompleted(): Promise<WorkoutSession[]> {
   const sessions = await db.sessions.where('status').equals('completed').toArray()
@@ -159,6 +163,7 @@ export const sessionRepo = {
   removeExercise,
   finish,
   discard,
+  remove,
   listCompleted,
   previousSets,
 }

@@ -1,14 +1,21 @@
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useNavigate } from 'react-router-dom'
 import { Header } from '../ui/Header'
-import { PlusIcon } from '../ui/icons'
-import { templateRepo } from '../db'
+import { PlayIcon, PlusIcon } from '../ui/icons'
+import { sessionRepo, templateRepo } from '../db'
 import { pluralize } from '../lib/pluralize'
+import { useInProgressSession } from '../ui/useInProgressSession'
 import styles from './Templates.module.css'
 
 export function Templates() {
   const navigate = useNavigate()
   const templates = useLiveQuery(() => templateRepo.list(), [])
+  const inProgress = useInProgressSession()
+
+  async function handleStart(templateId: string) {
+    const session = await sessionRepo.start(templateId)
+    navigate(`/session/${session.id}`)
+  }
 
   return (
     <>
@@ -22,17 +29,31 @@ export function Templates() {
         {templates && templates.length > 0 && (
           <div className={styles.list}>
             {templates.map((template) => (
-              <button
+              <div
                 key={template.id}
-                type="button"
                 className={styles.item}
-                onClick={() => navigate(`/templates/${template.id}`)}
               >
-                <span className={styles.itemName}>{template.name}</span>
-                <span className={styles.itemCount}>
-                  {pluralize(template.items.length, 'exercise')}
-                </span>
-              </button>
+                <button
+                  type="button"
+                  className={styles.itemOpen}
+                  onClick={() => navigate(`/templates/${template.id}`)}
+                >
+                  <span className={styles.itemName}>{template.name}</span>
+                  <span className={styles.itemCount}>
+                    {pluralize(template.items.length, 'exercise')}
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  className={styles.startButton}
+                  aria-label={`Start ${template.name}`}
+                  disabled={template.items.length === 0 || Boolean(inProgress)}
+                  onClick={() => handleStart(template.id)}
+                >
+                  <PlayIcon size={18} />
+                  <span>Start</span>
+                </button>
+              </div>
             ))}
           </div>
         )}

@@ -30,7 +30,7 @@
   --space-5: 24px;
   --space-6: 32px;
 
-  --tab-bar-height: 68px;
+  --tab-bar-height: 64px;
   --header-height: 56px;
   --tap-min: 44px;
   --safe-top: env(safe-area-inset-top, 0px);

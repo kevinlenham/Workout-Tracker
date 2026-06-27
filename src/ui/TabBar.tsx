@@ -13,14 +13,14 @@ export function TabBar() {
         end
         className={({ isActive }) => `${styles.tab} ${isActive ? styles.active : ''}`}
       >
-        <HomeIcon size={25} />
+        <HomeIcon size={24} />
         <span>Home</span>
       </NavLink>
       <NavLink
         to="/templates"
         className={({ isActive }) => `${styles.tab} ${isActive ? styles.active : ''}`}
       >
-        <ListIcon size={25} />
+        <ListIcon size={24} />
         <span>Templates</span>
       </NavLink>
       {inProgress && (
@@ -30,7 +30,7 @@ export function TabBar() {
             `${styles.tab} ${styles.resumeTab} ${isActive ? styles.active : ''}`
           }
         >
-          <PlayIcon size={25} />
+          <PlayIcon size={24} />
           <span>In Progress</span>
         </NavLink>
       )}

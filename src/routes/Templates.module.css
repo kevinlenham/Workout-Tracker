@@ -11,19 +11,28 @@
 
 .item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  overflow: hidden;
   font-size: var(--text-base);
   font-weight: 700;
 }
 
 .item:active {
   background: var(--surface-raised);
+}
+
+.itemOpen {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: left;
+  padding: var(--space-4);
 }
 
 .itemName {
@@ -39,6 +48,28 @@
   color: var(--text-dim);
   font-size: var(--text-sm);
   font-weight: 400;
+}
+
+.startButton {
+  flex-shrink: 0;
+  min-width: 86px;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  color: var(--accent);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.startButton:active {
+  background: var(--surface-raised);
+}
+
+.startButton:disabled {
+  color: var(--text-dim);
+  opacity: 0.45;
 }
 
 .empty {

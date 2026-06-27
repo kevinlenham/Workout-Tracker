@@ -121,7 +121,7 @@
   gap: var(--space-3);
 }
 
-.startButton {
+.saveButton {
   min-height: 52px;
   display: flex;
   align-items: center;
@@ -131,16 +131,6 @@
   border-radius: var(--radius);
   font-size: var(--text-base);
   font-weight: 700;
-  text-align: center;
-}
-
-.startButton:disabled {
-  opacity: 0.5;
-}
-
-.resumeNote {
-  color: var(--text-dim);
-  font-size: var(--text-sm);
   text-align: center;
 }
 

@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { exerciseRepo } from '../db'
+import { PlusIcon } from './icons'
 import styles from './ExercisePicker.module.css'
 
 const FOCUSABLE_SELECTOR =
@@ -90,17 +91,25 @@ export function ExercisePicker({ open, onClose, onPick }: ExercisePickerProps) {
         aria-labelledby={titleId}
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 id={titleId} className={styles.title}>
-          Add exercise
-        </h2>
-        <input
-          ref={searchInputRef}
-          className={styles.search}
-          aria-label="Search or create an exercise"
-          placeholder="Search or create an exercise"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
+        <div className={styles.grabber} aria-hidden="true" />
+        <div className={styles.header}>
+          <h2 id={titleId} className={styles.title}>
+            Add exercise
+          </h2>
+          <button type="button" className={styles.doneButton} onClick={onClose}>
+            Done
+          </button>
+        </div>
+        <div className={styles.searchWrap}>
+          <input
+            ref={searchInputRef}
+            className={styles.search}
+            aria-label="Search or create an exercise"
+            placeholder="Search or create"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </div>
         <div className={styles.list}>
           {filtered.map((exercise) => (
             <button
@@ -118,16 +127,16 @@ export function ExercisePicker({ open, onClose, onPick }: ExercisePickerProps) {
               className={`${styles.item} ${styles.createItem}`}
               onClick={handleCreate}
             >
-              + Create &quot;{query.trim()}&quot;
+              <span className={styles.createIcon}>
+                <PlusIcon size={17} />
+              </span>
+              <span>Create &quot;{query.trim()}&quot;</span>
             </button>
           )}
           {filtered.length === 0 && !normalizedQuery && (
             <p className={styles.empty}>Start typing to search or create an exercise.</p>
           )}
         </div>
-        <button type="button" className={styles.cancel} onClick={onClose}>
-          Cancel
-        </button>
       </div>
     </div>
   )

@@ -5,8 +5,7 @@ import { Header } from '../ui/Header'
 import { Stepper } from '../ui/Stepper'
 import { ExercisePicker } from '../ui/ExercisePicker'
 import { PlusIcon, TrashIcon } from '../ui/icons'
-import { exerciseRepo, sessionRepo, templateRepo, type TemplateItem } from '../db'
-import { useInProgressSession } from '../ui/useInProgressSession'
+import { exerciseRepo, templateRepo, type TemplateItem } from '../db'
 import styles from './TemplateEditor.module.css'
 
 export function TemplateEditor() {
@@ -28,7 +27,6 @@ export function TemplateEditor() {
 
   const template = useLiveQuery(() => (id ? templateRepo.get(id) : undefined), [id])
   const exercises = useLiveQuery(() => exerciseRepo.listAll(), [])
-  const inProgress = useInProgressSession()
 
   const [name, setName] = useState('')
   const syncedNameForId = useRef<string | null>(null)
@@ -85,12 +83,9 @@ export function TemplateEditor() {
     navigate('/templates', { replace: true })
   }
 
-  async function handleStart() {
-    const session = await sessionRepo.start(id!)
-    navigate(`/session/${session.id}`)
+  function handleSave() {
+    navigate('/templates', { replace: true })
   }
-
-  const canStart = template.items.length > 0 && !inProgress
 
   return (
     <>
@@ -158,29 +153,9 @@ export function TemplateEditor() {
         </button>
 
         <div className={styles.actions}>
-          {inProgress ? (
-            <>
-              <p className={styles.resumeNote}>
-                You have a workout in progress. Finish or discard it before starting another.
-              </p>
-              <button
-                type="button"
-                className={styles.startButton}
-                onClick={() => navigate(`/session/${inProgress.id}`)}
-              >
-                Resume in-progress workout
-              </button>
-            </>
-          ) : (
-            <button
-              type="button"
-              className={styles.startButton}
-              disabled={!canStart}
-              onClick={handleStart}
-            >
-              Start session
-            </button>
-          )}
+          <button type="button" className={styles.saveButton} onClick={handleSave}>
+            Save template
+          </button>
           <button type="button" className={styles.deleteButton} onClick={handleDelete}>
             Delete template
           </button>

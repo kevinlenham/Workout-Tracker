@@ -149,6 +149,17 @@ describe('finish and discard', () => {
     await expect(sessionRepo.discard(session.id)).rejects.toThrow(/only an in-progress session/i)
     expect(await sessionRepo.get(session.id)).not.toBeUndefined()
   })
+
+  it('removes a completed workout from history', async () => {
+    const { template } = await setUpTemplate()
+    const session = await sessionRepo.start(template.id)
+    await sessionRepo.finish(session.id)
+
+    await sessionRepo.remove(session.id)
+
+    expect(await sessionRepo.get(session.id)).toBeUndefined()
+    expect(await sessionRepo.listCompleted()).toEqual([])
+  })
 })
 
 describe('sessionRepo.previousSets (last-session hint)', () => {
