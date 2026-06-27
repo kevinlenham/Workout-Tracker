@@ -1,7 +1,6 @@
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useNavigate } from 'react-router-dom'
 import { Header } from '../ui/Header'
-import { TabBar } from '../ui/TabBar'
 import { PlayIcon, PlusIcon } from '../ui/icons'
 import { sessionRepo, templateRepo } from '../db'
 import { pluralize } from '../lib/pluralize'
@@ -21,7 +20,6 @@ export function Templates() {
   return (
     <>
       <Header title="Templates" showSettings />
-      <TabBar />
       <div className={styles.content}>
         {templates && templates.length === 0 && (
           <div className={styles.empty}>
