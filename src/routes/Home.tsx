@@ -15,7 +15,7 @@ export function Home() {
   const templateNameById = new Map((templates ?? []).map((t) => [t.id, t.name]))
 
   async function handleDeleteWorkout(sessionId: string) {
-    const confirmed = window.confirm('Delete this workout? This cannot be undone.')
+    const confirmed = window.confirm('Are you sure you want to delete this workout?')
     if (!confirmed) return
     await sessionRepo.remove(sessionId)
   }

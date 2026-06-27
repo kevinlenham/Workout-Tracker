@@ -57,7 +57,7 @@
   font: var(--text-base) / 1.5 var(--font-sans);
   font-variant-numeric: tabular-nums;
   color: var(--text);
-  background: var(--bg);
+  background: var(--surface);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -73,6 +73,7 @@ body {
 
 #root {
   min-height: 100svh;
+  background: var(--bg);
 }
 
 button,
