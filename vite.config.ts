@@ -39,6 +39,9 @@ export default defineConfig({
         ],
       },
       workbox: {
+        skipWaiting: true,
+        clientsClaim: true,
+        cleanupOutdatedCaches: true,
         // woff2 only: every browser this PWA targets (modern iOS/Android)
         // fetches woff2, so caching the legacy .woff fallback too would
         // just double the precached font payload for nothing.
