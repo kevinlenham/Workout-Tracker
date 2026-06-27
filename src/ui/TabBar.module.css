@@ -6,7 +6,7 @@
   z-index: 2;
   display: flex;
   height: var(--tab-bar-shell-height);
-  padding: var(--space-2) calc(var(--safe-right) + var(--space-3)) var(--safe-bottom-compact)
+  padding: var(--space-2) calc(var(--safe-right) + var(--space-3)) var(--bottom-control-inset)
     calc(var(--safe-left) + var(--space-3));
   background: var(--surface);
   border-top: 1px solid var(--border);
@@ -20,7 +20,7 @@
   justify-content: center;
   gap: 2px;
   min-width: 0;
-  min-height: calc(var(--tab-bar-height) - var(--space-4));
+  min-height: calc(var(--tab-bar-height) - var(--space-2) - var(--bottom-control-inset));
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius);
   color: var(--text-dim);

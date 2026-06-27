@@ -1,6 +1,6 @@
 .content {
   padding: var(--space-4) calc(var(--space-4) + var(--safe-right))
-    calc(var(--space-6) + var(--safe-bottom-compact)) calc(var(--space-4) + var(--safe-left));
+    calc(var(--space-6) + var(--bottom-control-inset)) calc(var(--space-4) + var(--safe-left));
 }
 
 .meta {
