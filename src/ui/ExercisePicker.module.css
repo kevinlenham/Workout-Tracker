@@ -18,7 +18,7 @@
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
   padding: var(--space-2) calc(var(--space-4) + var(--safe-right))
-    calc(var(--space-4) + var(--safe-bottom)) calc(var(--space-4) + var(--safe-left));
+    calc(var(--space-4) + var(--safe-bottom-compact)) calc(var(--space-4) + var(--safe-left));
 }
 
 .grabber {
