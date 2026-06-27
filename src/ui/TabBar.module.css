@@ -1,14 +1,14 @@
 .bar {
   position: fixed;
-  bottom: 0;
+  bottom: calc(0px - var(--safe-bottom));
   left: 0;
   right: 0;
   z-index: 2;
   display: flex;
-  align-items: center;
-  height: var(--tab-bar-shell-height);
-  min-height: var(--tab-bar-shell-height);
-  max-height: var(--tab-bar-shell-height);
+  align-items: flex-start;
+  height: calc(var(--tab-bar-shell-height) + var(--safe-bottom));
+  min-height: calc(var(--tab-bar-shell-height) + var(--safe-bottom));
+  max-height: calc(var(--tab-bar-shell-height) + var(--safe-bottom));
   padding: 6px calc(var(--safe-right) + var(--space-3)) 6px
     calc(var(--safe-left) + var(--space-3));
   background: var(--bg);
