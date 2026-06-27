@@ -30,15 +30,14 @@
   --space-5: 24px;
   --space-6: 32px;
 
-  --tab-bar-height: 72px;
+  --tab-bar-height: 56px;
   --header-height: 56px;
   --tap-min: 44px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
-  /* Standalone iOS PWAs can report an oversized bottom inset; keep it cosmetic. */
-  --bottom-control-inset: 12px;
+  --bottom-control-inset: 0px;
   --header-shell-height: calc(var(--header-height) + var(--safe-top));
   --tab-bar-shell-height: var(--tab-bar-height);
 
