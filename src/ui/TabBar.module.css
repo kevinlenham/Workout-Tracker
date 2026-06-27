@@ -1,6 +1,6 @@
 .bar {
   position: fixed;
-  bottom: 0;
+  bottom: calc(0px - var(--safe-bottom));
   left: 0;
   right: 0;
   z-index: 2;
