@@ -1,6 +1,6 @@
 .bar {
   position: fixed;
-  bottom: 0;
+  bottom: var(--tab-bar-bottom-offset);
   left: 0;
   right: 0;
 

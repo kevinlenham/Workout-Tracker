@@ -23,8 +23,9 @@ describe('PWA shell', () => {
     expect(css).toContain(
       '--tab-bar-shell-height: calc(var(--tab-bar-height) + var(--safe-bottom));',
     )
+    expect(css).toContain('--tab-bar-bottom-offset: calc(-1 * var(--safe-bottom));')
     expect(tabCss).toContain('position: fixed;')
-    expect(tabCss).toContain('bottom: 0;')
+    expect(tabCss).toContain('bottom: var(--tab-bar-bottom-offset);')
     expect(tabCss).toContain('height: var(--tab-bar-shell-height);')
   })
 })
