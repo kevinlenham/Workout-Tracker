@@ -23,7 +23,7 @@ describe('PWA shell', () => {
     expect(css).toContain(
       '--tab-bar-shell-height: calc(var(--tab-bar-height) + var(--safe-bottom));',
     )
-    expect(css).toContain('--tab-bar-bottom-raise: min(6px, var(--safe-bottom));')
+    expect(css).toContain('--tab-bar-bottom-raise: min(10px, var(--safe-bottom));')
     expect(css).toContain(
       '--tab-bar-bottom-offset: calc(var(--tab-bar-bottom-raise) - var(--safe-bottom));',
     )
