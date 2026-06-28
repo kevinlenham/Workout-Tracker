@@ -11,15 +11,18 @@
 @import '@fontsource/nunito/latin-ext-800.css';
 
 :root {
-  --bg: #15171a;
-  --surface: #1d2024;
-  --surface-raised: #242830;
-  --border: #2c3036;
-  --text: #ecedee;
-  --text-dim: #9aa0a6;
-  --accent: #4fbdb0;
-  --accent-contrast: #08130f;
-  --danger: #e2716b;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-raised: #eef3fb;
+  --border: #dce3ee;
+  --text: #20232b;
+  --text-dim: #6d7482;
+  --accent: #6554e8;
+  --accent-soft: #eeeafd;
+  --accent-contrast: #ffffff;
+  --stat-surface: #dcecff;
+  --stat-accent: #2f8fd3;
+  --danger: #d95f59;
 
   --radius: 14px;
   --radius-sm: 8px;
@@ -56,12 +59,29 @@
   --font-sans:
     'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
-  color-scheme: dark;
+  color-scheme: light;
   font: var(--text-base) / 1.5 var(--font-sans);
   font-variant-numeric: tabular-nums;
   color: var(--text);
   background: var(--bg);
   -webkit-tap-highlight-color: transparent;
+}
+
+:root[data-theme='dark'] {
+  --bg: #20242c;
+  --surface: #292f38;
+  --surface-raised: #343c48;
+  --border: #46505f;
+  --text: #f4f6fb;
+  --text-dim: #b5bfcc;
+  --accent: #a99cff;
+  --accent-soft: #393553;
+  --accent-contrast: #11131a;
+  --stat-surface: #263c54;
+  --stat-accent: #94cfff;
+  --danger: #ff8d86;
+
+  color-scheme: dark;
 }
 
 * {

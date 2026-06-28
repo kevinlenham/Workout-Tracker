@@ -46,6 +46,7 @@ async function start(templateId: string): Promise<WorkoutSession> {
   const session: WorkoutSession = {
     id: newId(),
     templateId,
+    templateName: template.name,
     startedAt: Date.now(),
     completedAt: null,
     status: 'in-progress',

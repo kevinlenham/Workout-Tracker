@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { Header } from '../ui/Header'
 import { backupRepo } from '../db'
+import { useTheme, type ThemeMode } from '../ui/theme'
 import styles from './Settings.module.css'
 
 function todayStamp() {
@@ -12,6 +13,7 @@ type Message = { text: string; tone: 'success' | 'error' }
 export function Settings() {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [message, setMessage] = useState<Message | null>(null)
+  const { theme, setTheme } = useTheme()
 
   async function handleExport() {
     const data = await backupRepo.exportAll()
@@ -53,6 +55,23 @@ export function Settings() {
     <>
       <Header title="Settings" back />
       <div className={styles.content}>
+        <section className={styles.section}>
+          <h2>Appearance</h2>
+          <div className={styles.themeOptions} role="group" aria-label="Color theme">
+            {(['light', 'dark'] satisfies ThemeMode[]).map((option) => (
+              <button
+                type="button"
+                key={option}
+                className={`${styles.themeButton} ${theme === option ? styles.themeButtonActive : ''}`}
+                aria-pressed={theme === option}
+                onClick={() => setTheme(option)}
+              >
+                <span>{option === 'light' ? 'Light' : 'Charcoal'}</span>
+              </button>
+            ))}
+          </div>
+        </section>
+
         <section className={styles.section}>
           <h2>Backup</h2>
           <p className={styles.hint}>

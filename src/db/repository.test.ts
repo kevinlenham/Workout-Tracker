@@ -27,6 +27,7 @@ describe('sessionRepo.start', () => {
     const session = await sessionRepo.start(template.id)
 
     expect(session.templateId).toBe(template.id)
+    expect(session.templateName).toBe('Push Day')
     expect(session.status).toBe('in-progress')
     expect(session.completedAt).toBeNull()
     const emptySet = { id: expect.any(String), weight: null, reps: null, note: '' }
@@ -307,6 +308,7 @@ describe('deleting a template with logged sessions', () => {
 
     expect(await templateRepo.get(template.id)).toBeUndefined()
     const persisted = await sessionRepo.get(session.id)
+    expect(persisted?.templateName).toBe('Push Day')
     expect(persisted?.exercises[0]).toEqual({
       id: expect.any(String),
       exerciseId: bench.id,

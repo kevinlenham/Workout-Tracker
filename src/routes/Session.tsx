@@ -5,7 +5,6 @@ import { Header } from '../ui/Header'
 import { ExercisePicker } from '../ui/ExercisePicker'
 import { PlusIcon, TrashIcon } from '../ui/icons'
 import { exerciseRepo, sessionRepo, templateRepo, type SetEntry } from '../db'
-import { formatDate } from '../lib/formatDate'
 import styles from './Session.module.css'
 
 type SetRowProps = {
@@ -42,57 +41,75 @@ function SetRow({ index, set, hint, onPatch, onRemove }: SetRowProps) {
   return (
     <div className={styles.setRow}>
       <div className={styles.setIndex}>{index + 1}</div>
-      <div className={styles.field}>
-        <label className={styles.fieldLabel} htmlFor={`${fieldId}-weight`}>
-          Weight (kg)
-        </label>
-        <input
-          id={`${fieldId}-weight`}
-          className={styles.input}
-          type="number"
-          inputMode="decimal"
-          step="0.5"
-          min="0"
-          placeholder={hint?.weight != null ? String(hint.weight) : '—'}
-          value={weightText}
-          onChange={(e) => handleWeightChange(e.target.value)}
-        />
-      </div>
-      <div className={styles.field}>
-        <label className={styles.fieldLabel} htmlFor={`${fieldId}-reps`}>
-          Reps
-        </label>
-        <input
-          id={`${fieldId}-reps`}
-          className={styles.input}
-          type="number"
-          inputMode="numeric"
-          step="1"
-          min="0"
-          placeholder={hint?.reps != null ? String(hint.reps) : '—'}
-          value={repsText}
-          onChange={(e) => handleRepsChange(e.target.value)}
-        />
-      </div>
-      <button type="button" className={styles.removeSetButton} aria-label="Remove set" onClick={onRemove}>
-        <TrashIcon size={19} />
-      </button>
-      <div className={styles.noteRow}>
-        {hint?.note && <div className={styles.prevNote}>Last time: {hint.note}</div>}
+
+      <input
+        id={`${fieldId}-weight`}
+        className={styles.input}
+        aria-label={`Set ${index + 1} weight in kg`}
+        type="number"
+        inputMode="decimal"
+        step="0.5"
+        min="0"
+        placeholder={hint?.weight != null ? String(hint.weight) : '-'}
+        value={weightText}
+        onChange={(e) => handleWeightChange(e.target.value)}
+      />
+
+      <input
+        id={`${fieldId}-reps`}
+        className={styles.input}
+        aria-label={`Set ${index + 1} reps`}
+        type="number"
+        inputMode="numeric"
+        step="1"
+        min="0"
+        placeholder={hint?.reps != null ? String(hint.reps) : '-'}
+        value={repsText}
+        onChange={(e) => handleRepsChange(e.target.value)}
+      />
+
+      <div className={styles.noteCell}>
+        {hint?.note && <div className={styles.prevNote}>Last: {hint.note}</div>}
         <label className={styles.srOnly} htmlFor={`${fieldId}-note`}>
           Note
         </label>
         <input
           id={`${fieldId}-note`}
-          className={styles.input}
+          className={styles.noteInput}
           type="text"
           placeholder="Note"
           value={note}
           onChange={(e) => handleNoteChange(e.target.value)}
         />
       </div>
+
+      <button
+        type="button"
+        className={styles.removeSetButton}
+        aria-label="Remove set"
+        onClick={onRemove}
+      >
+        <TrashIcon size={18} />
+      </button>
     </div>
   )
+}
+
+function formatHeaderDate(epochMs: number): string {
+  return new Date(epochMs).toLocaleDateString(undefined, {
+    day: 'numeric',
+    month: 'short',
+  })
+}
+
+function formatSessionDateTime(epochMs: number): string {
+  return new Date(epochMs).toLocaleString(undefined, {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    hour: 'numeric',
+    minute: '2-digit',
+  })
 }
 
 export function Session() {
@@ -136,16 +153,32 @@ export function Session() {
   }
 
   const isInProgress = session.status === 'in-progress'
+  const title = session.templateName ?? template?.name ?? 'Workout'
 
   return (
     <>
-      <Header title={template?.name ?? 'Workout'} back />
+      <Header title={formatHeaderDate(session.completedAt ?? session.startedAt)} back />
       <div className={styles.content}>
-        <div className={styles.meta}>
-          <span className={styles.metaTitle}>{template?.name ?? 'Workout'}</span>
-          <span className={styles.metaSub}>
-            {isInProgress ? 'In progress' : formatDate(session.completedAt ?? session.startedAt)}
-          </span>
+        <div className={styles.summaryCard}>
+          <h2>{title}</h2>
+          <div className={styles.summaryRows}>
+            <div className={styles.summaryRow}>
+              <span>Start Time</span>
+              <time dateTime={new Date(session.startedAt).toISOString()}>
+                {formatSessionDateTime(session.startedAt)}
+              </time>
+            </div>
+            <div className={styles.summaryRow}>
+              <span>End Time</span>
+              {session.completedAt == null ? (
+                <span className={styles.inProgress}>In progress</span>
+              ) : (
+                <time dateTime={new Date(session.completedAt).toISOString()}>
+                  {formatSessionDateTime(session.completedAt)}
+                </time>
+              )}
+            </div>
+          </div>
         </div>
 
         {session.exercises.map((sessionExercise, exIdx) => (
@@ -160,9 +193,19 @@ export function Session() {
                 aria-label="Remove exercise"
                 onClick={() => sessionRepo.removeExercise(id!, exIdx)}
               >
-                <TrashIcon size={19} />
+                <TrashIcon size={18} />
               </button>
             </div>
+
+            {sessionExercise.sets.length > 0 && (
+              <div className={styles.setHeader} aria-hidden="true">
+                <span />
+                <span>Kg</span>
+                <span>Reps</span>
+                <span>Notes</span>
+                <span />
+              </div>
+            )}
 
             {sessionExercise.sets.map((set, setIdx) => (
               <SetRow
@@ -180,7 +223,7 @@ export function Session() {
               className={styles.addSetButton}
               onClick={() => sessionRepo.addSet(id!, exIdx)}
             >
-              + Add set
+              + Add Set
             </button>
           </div>
         ))}

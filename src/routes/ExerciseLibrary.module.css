@@ -1,0 +1,98 @@
+.content {
+  padding: var(--space-4) calc(var(--space-4) + var(--safe-right))
+    calc(var(--space-6) + var(--bottom-control-inset)) calc(var(--space-4) + var(--safe-left));
+}
+
+.addForm {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 52px;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.input,
+.editInput {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: var(--text-base);
+  font-weight: 700;
+}
+
+.input::placeholder,
+.editInput::placeholder {
+  color: var(--text-dim);
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  background: var(--accent);
+  border-radius: var(--radius);
+  color: var(--accent-contrast);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 60px;
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.item:first-child {
+  border-top: 0;
+}
+
+.nameButton {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--tap-min);
+  overflow: hidden;
+  color: var(--text);
+  font-size: var(--text-base);
+  font-weight: 800;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.editInput {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--tap-min);
+  padding: 0 var(--space-3);
+  background: var(--surface-raised);
+}
+
+.deleteButton {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap-min);
+  height: var(--tap-min);
+  color: var(--danger);
+}
+
+.empty {
+  padding: var(--space-6) var(--space-4);
+  color: var(--text-dim);
+  text-align: center;
+}

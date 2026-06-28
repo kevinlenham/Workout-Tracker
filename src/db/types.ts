@@ -33,6 +33,7 @@ export type SessionStatus = 'in-progress' | 'completed'
 export type WorkoutSession = {
   id: string
   templateId: string
+  templateName?: string // snapshot so history keeps its workout name if the template is deleted
   startedAt: number // epoch ms
   completedAt: number | null
   status: SessionStatus

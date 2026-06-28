@@ -2,15 +2,15 @@
 name: Workouts
 description: A calm, offline-first workout logger built for fast entry mid-set.
 colors:
-  bg: "#15171a"
-  surface: "#1d2024"
-  surface-raised: "#242830"
-  border: "#2c3036"
-  text: "#ecedee"
-  text-dim: "#9aa0a6"
-  accent: "#4fbdb0"
-  accent-contrast: "#08130f"
-  danger: "#e2716b"
+  bg: "#f8fafc"
+  surface: "#ffffff"
+  surface-raised: "#eef3fb"
+  border: "#dce3ee"
+  text: "#20232b"
+  text-dim: "#6d7482"
+  accent: "#6554e8"
+  accent-contrast: "#ffffff"
+  danger: "#d95f59"
 typography:
   headline:
     fontFamily: "'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"

@@ -7,6 +7,7 @@ import { Templates } from './routes/Templates'
 import { TemplateEditor } from './routes/TemplateEditor'
 import { Session } from './routes/Session'
 import { Settings } from './routes/Settings'
+import { ExerciseLibrary } from './routes/ExerciseLibrary'
 
 const TAB_ROOTS = ['/', '/templates']
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/templates" element={<Templates />} />
           <Route path="/templates/new" element={<TemplateEditor />} />
           <Route path="/templates/:id" element={<TemplateEditor />} />
+          <Route path="/exercises" element={<ExerciseLibrary />} />
           <Route path="/session/:id" element={<Session />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>

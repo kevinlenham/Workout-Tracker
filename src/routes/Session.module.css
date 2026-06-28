@@ -3,29 +3,55 @@
     calc(var(--space-6) + var(--bottom-control-inset)) calc(var(--space-4) + var(--safe-left));
 }
 
-.meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+.summaryCard,
+.exercise {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.summaryCard {
+  padding: var(--space-4);
   margin-bottom: var(--space-5);
 }
 
-.metaTitle {
+.summaryCard h2 {
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
   font-size: var(--text-lg);
   font-weight: 800;
+  line-height: 1.2;
 }
 
-.metaSub {
+.summaryRows {
+  display: flex;
+  flex-direction: column;
+}
+
+.summaryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 54px;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--text-base);
+}
+
+.summaryRow:last-child {
+  border-bottom: 0;
+}
+
+.summaryRow time,
+.inProgress {
   color: var(--text-dim);
-  font-size: var(--text-sm);
+  text-align: right;
+  font-weight: 600;
 }
 
 .exercise {
   margin-bottom: var(--space-5);
-  padding: var(--space-3);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  padding: var(--space-4);
 }
 
 .exerciseHeader {
@@ -33,7 +59,8 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
 }
 
 .exerciseName {
@@ -43,68 +70,82 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: var(--text-base);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .removeExerciseButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--tap-min);
-  height: var(--tap-min);
+  width: 36px;
+  height: 36px;
   color: var(--danger);
 }
 
+.setHeader,
 .setRow {
   display: grid;
-  grid-template-columns: 28px 1fr 1fr var(--tap-min);
+  grid-template-columns: 40px 66px 58px minmax(0, 1fr) 36px;
   gap: var(--space-2);
   align-items: center;
-  padding: var(--space-2) 0;
-  border-top: 1px solid var(--border);
 }
 
-.setRow:first-of-type {
-  border-top: none;
+.setHeader {
+  padding: var(--space-3) 0 var(--space-1);
+  color: var(--text-dim);
+  font-size: var(--text-xs);
+  font-weight: 800;
+}
+
+.setRow {
+  min-height: 54px;
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--border);
 }
 
 .setIndex {
   display: flex;
   align-items: center;
-  height: 44px;
-  color: var(--text-dim);
-  font-size: var(--text-sm);
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  color: var(--accent);
+  font-size: var(--text-base);
   font-weight: 700;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.fieldLabel {
-  font-size: var(--text-xs);
-  color: var(--text-dim);
-}
-
-.input {
+.input,
+.noteInput {
   width: 100%;
-  padding: var(--space-2);
   height: var(--tap-min);
-  background: var(--surface-raised);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: var(--text);
   font-size: var(--text-base);
+  font-weight: 800;
 }
 
-.input::placeholder {
+.input::placeholder,
+.noteInput::placeholder {
   color: var(--text-dim);
+  font-weight: 600;
 }
 
-.noteRow {
-  grid-column: 2 / span 2;
-  margin-top: var(--space-1);
+.input:focus,
+.noteInput:focus {
+  outline: 0;
+}
+
+.noteCell {
+  min-width: 0;
+}
+
+.noteInput {
+  font-weight: 600;
 }
 
 .srOnly {
@@ -117,28 +158,32 @@
 }
 
 .prevNote {
-  font-size: var(--text-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   color: var(--accent);
-  margin-bottom: 3px;
+  font-size: var(--text-xs);
+  line-height: 1.2;
 }
 
 .removeSetButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--tap-min);
+  width: 36px;
   height: var(--tap-min);
   color: var(--danger);
 }
 
 .addSetButton {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  width: fit-content;
   min-height: var(--tap-min);
-  text-align: center;
   margin-top: var(--space-2);
   color: var(--accent);
-  font-size: var(--text-sm);
-  font-weight: 600;
+  font-size: var(--text-base);
+  font-weight: 800;
 }
 
 .addExerciseButton {
@@ -186,4 +231,12 @@
   text-align: center;
   font-size: var(--text-sm);
   font-weight: 600;
+}
+
+@media (max-width: 380px) {
+  .setHeader,
+  .setRow {
+    grid-template-columns: 34px 58px 52px minmax(0, 1fr) 32px;
+    gap: var(--space-1);
+  }
 }

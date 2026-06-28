@@ -38,7 +38,7 @@
 }
 
 .tab.active {
-  background: var(--surface-raised);
+  background: var(--accent-soft);
   color: var(--accent);
 }
 
