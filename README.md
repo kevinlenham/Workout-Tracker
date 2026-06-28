@@ -87,7 +87,3 @@ This app intentionally keeps the product simple:
 - Data stays on the user's device unless exported manually
 
 The design direction is a calm, dark, phone-first logging interface optimized for fast use between sets.
-
-## Resume Description
-
-Built an offline-first workout tracking PWA with React, TypeScript, Vite, Dexie/IndexedDB, and GitHub Pages, featuring reusable workout templates, auto-saved training sessions, previous-session set hints, JSON backup/import, and mobile home-screen installation.
