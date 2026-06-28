@@ -15,12 +15,14 @@ describe('PWA shell', () => {
     expect(html).not.toContain('black-translucent')
   })
 
-  it('keeps the bottom navigation as one fixed-height app bar', () => {
+  it('paints the bottom navigation through the iOS safe area', () => {
     const css = readFileSync('src/index.css', 'utf8')
     const tabCss = readFileSync('src/ui/TabBar.module.css', 'utf8')
 
     expect(css).toContain('--tab-bar-height: 68px;')
-    expect(css).toContain('--tab-bar-shell-height: var(--tab-bar-height);')
+    expect(css).toContain(
+      '--tab-bar-shell-height: calc(var(--tab-bar-height) + var(--safe-bottom));',
+    )
     expect(tabCss).toContain('position: fixed;')
     expect(tabCss).toContain('bottom: 0;')
     expect(tabCss).toContain('height: var(--tab-bar-shell-height);')
